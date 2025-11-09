@@ -1,6 +1,6 @@
  [
   {
-    "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5",
+    "image": "https://i.ibb.co.com/nskFZnnL/Abstract-Harmony.jpg",
     "title": "Abstract Harmony",
     "artist_name": "Elena Rodriguez",
     "category": "Abstract",
@@ -8,7 +8,7 @@
     "email": "elena.rodriguez@artmail.com"
   },
   {
-    "image": "https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8",
+    "image": "https://i.ibb.co.com/svV3rBFC/Urban-Shadows.jpg",
     "title": "Urban Shadows",
     "artist_name": "Marcus Chen",
     "category": "Photography",
@@ -16,7 +16,7 @@
     "email": "marcus.chen@photoart.com"
   },
   {
-    "image": "https://images.unsplash.com/photo-1541961017774-22349e4a1262",
+    "image": "https://i.ibb.co.com/B2VFztWV/Digital-Dreams.jpg",
     "title": "Digital Dreams",
     "artist_name": "Sarah Thompson",
     "category": "Digital Art",
@@ -24,7 +24,7 @@
     "email": "sarah.t@digitalcreative.com"
   },
   {
-    "image": "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9",
+    "image": "https://i.ibb.co.com/21R9NM8f/Mountain-Serenity.jpg",
     "title": "Mountain Serenity",
     "artist_name": "David Park",
     "category": "Landscape",
@@ -32,7 +32,7 @@
     "email": "david.park@natureart.com"
   },
   {
-    "image": "https://images.unsplash.com/photo-1583225214464-9296029427aa",
+    "image": "https://i.ibb.co.com/mC0yRK11/Portrait-in-Blue.jpg",
     "title": "Portrait in Blue",
     "artist_name": "Isabella Martinez",
     "category": "Portrait",
@@ -40,7 +40,7 @@
     "email": "isabella.m@portraiture.com"
   },
   {
-    "image": "https://images.unsplash.com/photo-1549887534-1541e9326642",
+    "image": "https://i.ibb.co.com/9mSx5gjq/Geometric-Flow.jpg",
     "title": "Geometric Flow",
     "artist_name": "Alex Kim",
     "category": "Abstract",
@@ -48,7 +48,7 @@
     "email": "alex.kim@modernart.com"
   },
   {
-    "image": "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b",
+    "image": "https://i.ibb.co.com/0VcDqs49/Watercolor-Sunset.jpg",
     "title": "Watercolor Sunset",
     "artist_name": "Nina Petrov",
     "category": "Traditional",
@@ -56,27 +56,19 @@
     "email": "nina.petrov@watercolorart.com"
   },
   {
-    "image": "https://images.unsplash.com/photo-1561214115-f2f134cc4e5d",
-    "title": "Street Life",
+    "image": "https://i.ibb.co.com/gQ3R36M/Metropolitan-Echo.jpg",
+    "title": "Metropolitan Echo",
     "artist_name": "James Wilson",
     "category": "Photography",
     "created_at": "2024-05-25T15:10:00Z",
     "email": "james.wilson@streetphoto.com"
   },
   {
-    "image": "https://images.unsplash.com/photo-1536924940846-227afb31e2a5",
+    "image": "https://i.ibb.co.com/60mx9pqk/Neon-Nights.jpg",
     "title": "Neon Nights",
     "artist_name": "Yuki Tanaka",
     "category": "Digital Art",
     "created_at": "2024-06-12T19:30:00Z",
     "email": "yuki.tanaka@neonart.com"
-  },
-  {
-    "image": "https://images.unsplash.com/photo-1513364776144-60967b0f800f",
-    "title": "Ocean Depths",
-    "artist_name": "Maria Santos",
-    "category": "Landscape",
-    "created_at": "2024-07-05T12:00:00Z",
-    "email": "maria.santos@oceanic.com"
   }
 ]

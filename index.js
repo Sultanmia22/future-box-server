@@ -9,7 +9,7 @@ const port = process.env.PORT || 4011;
 app.use(cors())
 app.use(express.json())
 
-const uri = "mongodb+srv://artifyDB:NNRMKZVl9jwnlzpz@cluster0.iweq9cs.mongodb.net/?appName=Cluster0";
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.iweq9cs.mongodb.net/?appName=Cluster0`;
 const client = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
@@ -23,8 +23,15 @@ async function run() {
 
         await client.connect();
         
-        const artworksDB = client.db('artworkDB');
+        const artworksDB = client.db('artifyDB');
         const artworkCollection = artworksDB.collection('artworks')
+
+
+        //! artwork related api
+        app.get('/artworks',async(req,res) => {
+            const result = await artworkCollection.find().toArray()
+            res.send(result)
+        })
 
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
