@@ -24,7 +24,8 @@ async function run() {
         await client.connect();
         
         const artworksDB = client.db('artifyDB');
-        const artworkCollection = artworksDB.collection('artworks')
+        const artworkCollection = artworksDB.collection('artworks');
+        const favourtiteCollection = artworksDB.collection('favouriteArtworks');
 
 
         //! artwork related api
@@ -53,6 +54,13 @@ async function run() {
 
             const result = await artworkCollection.updateOne(query,update);
             res.send(result);
+        })
+
+        //! Insert favourite artwork in favoutite db
+        app.post('/favouriteArt',async(req,res) => {
+            const favData = req.body;
+            const result = await favourtiteCollection.insertOne(favData)
+            res.send(result)
         })
 
         await client.db("admin").command({ ping: 1 });
