@@ -42,7 +42,18 @@ async function run() {
         })
 
         //! count like incress in DB 
-        // app.put('/arth')
+        app.patch('/likeCount/:id',async(req,res) => {
+            const id = req.params.id;
+            const query = {_id: new ObjectId(id)};
+            const update = {
+                $inc:{
+                    like_count: 1
+                }
+            }
+
+            const result = await artworkCollection.updateOne(query,update);
+            res.send(result);
+        })
 
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
