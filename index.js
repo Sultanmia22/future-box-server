@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors');
 const app = express();
-const { MongoClient, ServerApiVersion, Collection } = require('mongodb');
+const { MongoClient, ServerApiVersion, Collection, ObjectId } = require('mongodb');
 require('dotenv').config()
 const port = process.env.PORT || 4011;
 
@@ -29,7 +29,15 @@ async function run() {
 
         //! artwork related api
         app.get('/artworks',async(req,res) => {
-            const result = await artworkCollection.find().toArray()
+            const result = await artworkCollection.find().sort({created_at:-1}).limit(6).toArray()
+            res.send(result)
+        })
+
+        //! view details api 
+        app.get('/viewDetails/:id',async(req,res) => {
+            const id = req.params.id;
+            const query = {_id: new ObjectId(id)};
+            const result = await artworkCollection.findOne(query)
             res.send(result)
         })
 
