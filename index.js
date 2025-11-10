@@ -41,6 +41,9 @@ async function run() {
             res.send(result)
         })
 
+        //! count like incress in DB 
+        // app.put('/arth')
+
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
