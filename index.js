@@ -76,6 +76,13 @@ async function run() {
             res.send(result);
         })
 
+        //! My Favourite artwork api
+        app.get('/myfavourite',async(req,res) => {
+            const email = req.query.email;
+            const result = await favourtiteCollection.find({user_email:email}).toArray();
+            res.send(result)
+        })
+
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
