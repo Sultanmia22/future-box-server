@@ -63,6 +63,19 @@ async function run() {
             res.send(result)
         })
 
+        //! explore artwork api 
+        app.get('/explore',async(req,res) => {
+            const result = await artworkCollection.find().toArray();
+            res.send(result);
+        })
+
+        //! Search artwork api 
+        app.get('/search',async(req,res) => {
+            const searchText = req.query.search;
+            const result = await artworkCollection.find({title:{$regex:searchText,$options:'i'}}).toArray();
+            res.send(result);
+        })
+
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
