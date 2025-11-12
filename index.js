@@ -91,6 +91,28 @@ async function run() {
             res.send(result);
         })
 
+        //! Added artwork api
+        app.post('/addartwork',async(req,res)=> {
+            const data = req.body;
+            const result = await artworkCollection.insertOne(data)
+            res.send(result);
+        })
+
+        //! my gallery get api 
+        app.get('/mygallery',async(req,res) => {
+            const query = req.query.email;
+            const result = await artworkCollection.find({email:query}).toArray();
+            res.send(result)
+        })
+
+        //! My Gallery delete api 
+        app.delete('/mygalleryDetele/:id',async(req,res) => {
+            const id = req.params.id;
+            const query = {_id: new ObjectId(id)};
+            const result = await artworkCollection.deleteOne(query)
+            res.send(result)
+        })
+
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
