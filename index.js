@@ -113,6 +113,29 @@ async function run() {
             res.send(result)
         })
 
+        //! get data for update my gallery 
+        app.get('/updateGellary/:id',async(req,res) => {
+            const id = req.params.id;
+            const query = {_id: new ObjectId(id)}
+            const result = await artworkCollection.findOne(query)
+            res.send(result)
+        })
+
+        //! My Gallery update api 
+        app.patch('/updateMyGallery/:id',async(req,res) => {
+            const id = req.params.id
+            const data = req.body;
+            const query = {_id: new ObjectId(id)}
+            const update = {
+                $set:{
+                    ...data
+                }
+            }
+
+            const result = await artworkCollection.updateOne(query,update)
+            res.send(result)
+        })
+
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
