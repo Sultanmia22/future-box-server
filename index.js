@@ -21,7 +21,7 @@ const client = new MongoClient(uri, {
 async function run() {
     try {
 
-        await client.connect();
+        // await client.connect();
 
         const artworksDB = client.db('artifyDB');
         const artworkCollection = artworksDB.collection('artworks');
@@ -155,7 +155,14 @@ async function run() {
             res.send(result);
         })
 
-        await client.db("admin").command({ ping: 1 });
+        //! get total artwork 
+        app.get('/totalArt',async(req,res) => {
+            const email = req.query.email;
+            const result = await artworkCollection.find({email,artist_info_total_artworks: { $exists: true }}).toArray()
+            res.send(result)
+        })
+
+        // await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
 
