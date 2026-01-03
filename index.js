@@ -27,7 +27,27 @@ async function run() {
         const artworkCollection = artworksDB.collection('artworks');
         const favourtiteCollection = artworksDB.collection('favouriteArtworks');
         const contactCollection = artworksDB.collection('contacts');
+        const userCollection = artworksDB.collection('users');
 
+
+        // user data insert in Database 
+        app.post('/setUserData',async(req,res) => {
+            try{
+                const userInfo = req.body;
+
+                const isExitingUser = await userCollection.findOne({email:userInfo.email});
+
+                if(isExitingUser){
+                    return res.json({ success:false, message:'This email is already registered. Please log in.'})
+                }
+
+                const result = await userCollection.insertOne(userInfo);
+                res.json(result);
+            }
+            catch(er){
+                console.log(er)
+            }
+        })
 
         //! artwork related api
         app.get('/artworks', async (req, res) => {
