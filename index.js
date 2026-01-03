@@ -26,6 +26,7 @@ async function run() {
         const artworksDB = client.db('artifyDB');
         const artworkCollection = artworksDB.collection('artworks');
         const favourtiteCollection = artworksDB.collection('favouriteArtworks');
+        const contactCollection = artworksDB.collection('contacts');
 
 
         //! artwork related api
@@ -160,6 +161,13 @@ async function run() {
             const email = req.query.email;
             const result = await artworkCollection.find({email,artist_info_total_artworks: { $exists: true }}).toArray()
             res.send(result)
+        })
+
+        // Post contact mesage api 
+        app.post('/contacts',async(req,res) => {
+            const contactInfo = req.body;
+            const result = await contactCollection.insertOne(contactInfo);
+            res.json(result);
         })
 
         // await client.db("admin").command({ ping: 1 });
