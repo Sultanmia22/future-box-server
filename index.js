@@ -190,6 +190,54 @@ async function run() {
             res.json(result);
         })
 
+
+        // total Artwork get api 
+        app.get('/myTotal-artwork/favourite/like/:email',async(req,res) => {
+            try{
+                const {email} = req.params;
+
+                const query = {email:email};
+
+                const artResult = await artworkCollection.find(query).toArray();
+
+                const toalArt = artResult.length;
+
+                const totalLike = artResult.reduce((sum,art) => sum + (art.like_count || 0), 0)
+
+                const favResult = await favourtiteCollection.find(query).toArray();
+                
+                res.json({toalArt,totalFav:favResult.length,totalLike})
+            }
+            catch(er){
+                console.log(er.message)
+                res.status(500).json({message:'Server Error'});
+            }
+        });
+
+        // UPDATE User Information 
+        app.patch('/user/updateInfo',async(req,res) => {
+            try{
+                const data = req.body;
+                const {email} = req.query
+                const query = {email:email};
+                const updateInfo = {
+                    $set:data
+                }
+
+                const updateRes = await userCollection.updateOne(query,updateInfo)
+
+                const userData = await userCollection.findOne(query);
+
+                res.json({updateRes,userData});
+            }
+            catch(er){
+
+            }
+        })
+
+
+
+
         // await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
